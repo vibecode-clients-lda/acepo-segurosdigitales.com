@@ -57,10 +57,13 @@ body {
 }
 .brand { display: flex; align-items: center; gap: 14px; }
 .acepo-logo {
-  width: 44px;
-  height: 44px;
+  height: 56px;
+  width: auto;
   display: block;
   flex-shrink: 0;
+  background: #fff;
+  border-radius: 8px;
+  padding: 5px 8px;
 }
 .brand-divider {
   width: 1px;
@@ -222,12 +225,19 @@ body {
   box-shadow: 0 2px 6px rgba(12, 35, 64, .06);
 }
 .agent-chip .avatar-logo {
-  width: 34px; height: 34px;
+  width: 40px; height: 40px;
   background: #fff;
   border: 1px solid var(--border);
-  border-radius: 50%;
+  border-radius: 8px;
   display: grid; place-items: center;
-  padding: 4px;
+  padding: 3px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.agent-chip .avatar-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 .agent-chip-info { display: flex; flex-direction: column; line-height: 1.15; }
 .agent-chip-name {
@@ -879,12 +889,11 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
   margin-bottom: 12px;
 }
 .footer .footer-acepo-logo {
-  height: 72px;
+  height: 88px;
   width: auto;
-  /* No aplicar filter aquí: preservar color azul #1a9cd6 oficial de la marca. */
-  background: rgba(255,255,255,.06);
-  padding: 6px 10px;
-  border-radius: 8px;
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
 }
 .footer .footer-logo-divider {
   width: 1px;
@@ -965,23 +974,10 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
 </head>
 <body>
 
-<!-- ============ LOGO ACEPO OFICIAL (SVG) ============ -->
-<!-- Triángulo "A" estilizado de la marca ACEPO. No modificar paths ni color #1a9cd6. -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="acepo-mark" viewBox="0 0 380 320">
-      <!-- Vela derecha de la A: triángulo sólido alto y delgado -->
-      <path d="M 188 50 L 296 280 L 230 280 L 188 175 Z" fill="#1a9cd6"/>
-      <!-- Ala izquierda en curva -->
-      <path d="M 188 50 C 175 130, 145 200, 80 280 L 215 280 C 215 280, 210 230, 188 175 Z" fill="#1a9cd6"/>
-    </symbol>
-  </defs>
-</svg>
-
 <!-- ============ HEADER ============ -->
 <header class="app-header">
   <div class="brand">
-    <svg class="acepo-logo" viewBox="0 0 380 320" aria-hidden="true"><use href="#acepo-mark"/></svg>
+    <img class="acepo-logo" src="img/acepo-logo.png" alt="ACEPO — Asociación Cultural y Educativa Para La Policía" />
     <div class="brand-text">
       <span class="brand-title">ACEPO · Seguro Colectivo de Vida</span>
       <span class="brand-sub">Asociación Cultural y Educativa Para La Policía · Más de 40 años protegiendo familias</span>
@@ -1022,7 +1018,7 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
 <div class="hero">
   <div class="agent-chip">
     <div class="avatar-logo">
-      <svg viewBox="0 0 380 320" width="26" height="22" aria-hidden="true"><use href="#acepo-mark"/></svg>
+      <img src="img/acepo-logo.png" alt="ACEPO" />
     </div>
     <div class="agent-chip-info">
       <span class="agent-chip-name">ACEPO</span>
@@ -1371,7 +1367,7 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="footer-logos">
-    <img class="footer-acepo-logo" src="img/acepo-logo.svg" alt="ACEPO — Tranquilidad para usted. Seguridad para ellos." />
+    <img class="footer-acepo-logo" src="img/acepo-logo.png" alt="ACEPO — Asociación Cultural y Educativa Para La Policía" />
     <div class="footer-logo-divider"></div>
     <img class="footer-ins-logo" src="img/ins-blanco.png" alt="INS" />
   </div>
