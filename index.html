@@ -554,25 +554,84 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
 .benefit-block .stat .unit { font-size: 12px; color: var(--muted); font-weight: 600; margin-left: 4px; }
 
 .convenios-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   margin-top: 10px;
 }
-.convenio-tag {
-  display: flex; flex-direction: column; align-items: center; gap: 4px;
+.convenio {
   background: #f8fafc;
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 12px 8px;
-  font-size: 11px;
-  text-align: center;
-  color: var(--navy);
-  font-weight: 600;
+  overflow: hidden;
+  transition: border-color .2s ease-out, box-shadow .2s ease-out;
 }
-.convenio-tag .ico {
-  font-size: 22px;
+.convenio[open] {
+  border-color: var(--teal);
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(6, 182, 212, .08);
+}
+.convenio summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 13px;
+}
+.convenio summary::-webkit-details-marker { display: none; }
+.convenio summary::after {
+  content: '▾';
+  margin-left: 4px;
+  color: var(--muted);
+  font-size: 13px;
+  transition: transform .2s ease-out, color .2s ease-out;
+}
+.convenio[open] summary::after {
+  transform: rotate(180deg);
   color: var(--teal);
+}
+.convenio .conv-icon {
+  font-size: 18px;
+  width: 26px;
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.convenio .conv-name {
+  font-weight: 600;
+  color: var(--navy);
+  flex: 1;
+}
+.convenio .conv-pct {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--teal-deep);
+  background: var(--teal-bg);
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.convenio .conv-pct.variable {
+  background: #fef3c7;
+  color: var(--gold-text);
+}
+.conv-detail {
+  padding: 12px 14px 14px 50px;
+  font-size: 12.5px;
+  color: #475569;
+  line-height: 1.55;
+  border-top: 1px solid var(--border);
+}
+.conv-detail b { color: var(--navy); }
+.conv-detail .conv-note {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--muted);
+  font-style: italic;
 }
 
 /* ============ SECCIÓN 3 — COSTO VS PROTECCIÓN ============ */
@@ -705,6 +764,29 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
   color: var(--muted);
   line-height: 1.55;
   margin: 0;
+}
+
+.afil-notice {
+  margin-top: 18px;
+  background: linear-gradient(90deg, var(--gold-bg) 0%, #fefce8 100%);
+  border: 1px solid #fde68a;
+  border-left: 4px solid var(--gold-mid);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: var(--gold-text);
+  line-height: 1.55;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.afil-notice b { color: #422006; font-weight: 700; }
+.afil-notice-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  color: var(--gold-deep);
+  line-height: 1;
+  margin-top: 2px;
 }
 
 .afil-cta-block {
@@ -1184,13 +1266,116 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
     <div class="benefits-grid">
       <div class="benefit-block">
         <h3><span class="ico">🤝</span> Convenios comerciales</h3>
-        <p class="lead">Como asociado de ACEPO accede a tarifas preferenciales con nuestros aliados.</p>
+        <p class="lead">Como asociado de ACEPO accede a tarifas preferenciales con nuestros aliados. Toque cada convenio para ver el detalle del descuento.</p>
         <div class="convenios-list">
-          <div class="convenio-tag"><span class="ico">🏨</span>Hotel Arenas</div>
-          <div class="convenio-tag"><span class="ico">🕊️</span>Funeraria Polini</div>
-          <div class="convenio-tag"><span class="ico">🚗</span>Adobe Rent a Car</div>
-          <div class="convenio-tag"><span class="ico">👓</span>Ópticas Visión</div>
-          <div class="convenio-tag"><span class="ico">🔬</span>Asembis</div>
+
+          <details class="convenio">
+            <summary>
+              <span class="conv-icon">🏨</span>
+              <span class="conv-name">Hotel Arenas</span>
+              <span class="conv-pct">10% – 15%</span>
+            </summary>
+            <div class="conv-detail">
+              <b>10% de descuento entre semana</b> · <b>15% de descuento fines de semana</b>.
+              <span class="conv-note">Se debe presentar el certificado del socio al hacer la reserva.</span>
+            </div>
+          </details>
+
+          <details class="convenio">
+            <summary>
+              <span class="conv-icon">🏖️</span>
+              <span class="conv-name">Hotel Fiesta</span>
+              <span class="conv-pct">12% – 10%</span>
+            </summary>
+            <div class="conv-detail">
+              <b>12% de descuento entre semana</b> · <b>10% de descuento fines de semana</b>.
+              <span class="conv-note">Se debe presentar el certificado del socio al hacer la reserva.</span>
+            </div>
+          </details>
+
+          <details class="convenio">
+            <summary>
+              <span class="conv-icon">🌴</span>
+              <span class="conv-name">Hotel Barceló</span>
+              <span class="conv-pct">10%</span>
+            </summary>
+            <div class="conv-detail">
+              <b>10% de descuento sobre tarifas regulares</b>.
+              <span class="conv-note">Se debe presentar el certificado del socio al hacer la reserva.</span>
+            </div>
+          </details>
+
+          <details class="convenio">
+            <summary>
+              <span class="conv-icon">🥩</span>
+              <span class="conv-name">Ponderosa</span>
+              <span class="conv-pct">20%</span>
+            </summary>
+            <div class="conv-detail">
+              <b>20% de descuento</b> para socios.
+            </div>
+          </details>
+
+          <details class="convenio">
+            <summary>
+              <span class="conv-icon">🕊️</span>
+              <span class="conv-name">Funeraria Polini</span>
+              <span class="conv-pct">₡5.000/mes</span>
+            </summary>
+            <div class="conv-detail">
+              <b>Plan de Protección Familiar 9+2</b> exclusivo para asociados ACEPO: cobertura para <b>9 personas + 2 mascotas</b> por solo <b>₡5.000 al mes</b>.<br/><br/>
+              Incluye: campos de beneficiarios reemplazables, sin límite de edades, pólizas del INS a escoger (por monto adicional), cofre ejecutivo, cobertura de frontera a frontera, preparación y maquillaje del cuerpo, capillas de velación, decoración de iglesia, servicio de cremación + autopsia, urna laqueada, cremación de 2 mascotas con saquito para cenizas, y descuentos en comercios al presentar el carnet de afiliado.
+              <span class="conv-note">Atención: Funeraria Polini S.A. · 2231-3121 · WhatsApp 6004-3121 · ventas@funerariapolini.com</span>
+            </div>
+          </details>
+
+          <details class="convenio">
+            <summary>
+              <span class="conv-icon">🔬</span>
+              <span class="conv-name">Asembis</span>
+              <span class="conv-pct variable">Variable</span>
+            </summary>
+            <div class="conv-detail">
+              Descuentos en consultas, laboratorio y servicios médicos. <b>El monto del descuento es variable</b> según el servicio.
+              <span class="conv-note">Consulte el descuento aplicable al momento de la atención presentando su carnet de socio.</span>
+            </div>
+          </details>
+
+          <details class="convenio">
+            <summary>
+              <span class="conv-icon">🛒</span>
+              <span class="conv-name">Ekono</span>
+              <span class="conv-pct">5%</span>
+            </summary>
+            <div class="conv-detail">
+              <b>5% de descuento</b> para socios.
+            </div>
+          </details>
+
+          <details class="convenio">
+            <summary>
+              <span class="conv-icon">🚗</span>
+              <span class="conv-name">Adobe Rent a Car</span>
+              <span class="conv-pct">Tarifa socio</span>
+            </summary>
+            <div class="conv-detail">
+              Tarifas preferenciales para socios ACEPO en alquiler de vehículos.
+              <span class="conv-note">Consulte condiciones y tarifas al hacer la reserva presentando su carnet.</span>
+            </div>
+          </details>
+
+          <details class="convenio">
+            <summary>
+              <span class="conv-icon">👓</span>
+              <span class="conv-name">Ópticas Visión</span>
+              <span class="conv-pct">Tarifa socio</span>
+            </summary>
+            <div class="conv-detail">
+              Descuentos preferenciales en exámenes visuales, armazones y lentes.
+              <span class="conv-note">Presentar carnet de socio al momento de la atención.</span>
+            </div>
+          </details>
+
         </div>
       </div>
 
@@ -1322,7 +1507,14 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
       <div class="step-card">
         <div class="num-badge">3</div>
         <h3>Quedará protegido</h3>
-        <p>Recibe su certificado de seguro y el cobro empieza automáticamente por planilla. Su familia queda protegida desde ese momento.</p>
+        <p>Recibe su certificado de seguro. <b>La cobertura inicia con el primer rebajo de planilla</b> que usted autoriza en la solicitud de inclusión.</p>
+      </div>
+    </div>
+
+    <div class="afil-notice">
+      <span class="afil-notice-icon" aria-hidden="true">ⓘ</span>
+      <div>
+        <b>Importante — sobre el inicio de la cobertura:</b> La cobertura de este seguro quedará sujeta al <b>primer rebajo mensual de su salario</b>, mismo que usted autoriza mediante el llenado de la <b>solicitud de inclusión al Seguro Colectivo de Vida</b>, para que sea deducido por parte de ACEPO por un monto quincenal de <b>₡4.316</b>.
       </div>
     </div>
 
