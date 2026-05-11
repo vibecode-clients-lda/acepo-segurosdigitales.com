@@ -739,6 +739,43 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(14, 116, 144, .45);
 }
+.cta-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+  background: #25D366;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, .35);
+  transition: transform .2s ease-out, box-shadow .2s ease-out;
+}
+.cta-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(37, 211, 102, .45);
+  background: #20c05c;
+}
+.cta-whatsapp .wa-icon {
+  width: 22px; height: 22px;
+  display: inline-grid; place-items: center;
+}
+.cta-whatsapp .wa-icon svg { width: 100%; height: 100%; fill: currentColor; }
+.cta-whatsapp .wa-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  opacity: .92;
+  padding-left: 8px;
+  margin-left: 4px;
+  border-left: 1px solid rgba(255,255,255,.4);
+}
 .cta-secondary {
   display: inline-flex;
   align-items: center;
@@ -841,8 +878,13 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
   gap: 14px;
   margin-bottom: 12px;
 }
-.footer .footer-logo {
-  width: 48px; height: 48px;
+.footer .footer-acepo-logo {
+  height: 72px;
+  width: auto;
+  /* No aplicar filter aquí: preservar color azul #1a9cd6 oficial de la marca. */
+  background: rgba(255,255,255,.06);
+  padding: 6px 10px;
+  border-radius: 8px;
 }
 .footer .footer-logo-divider {
   width: 1px;
@@ -923,17 +965,15 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
 </head>
 <body>
 
-<!-- ============ LOGO ACEPO REUTILIZABLE (SVG) ============ -->
+<!-- ============ LOGO ACEPO OFICIAL (SVG) ============ -->
+<!-- Triángulo "A" estilizado de la marca ACEPO. No modificar paths ni color #1a9cd6. -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <symbol id="acepo-logo" viewBox="0 0 200 200">
-      <!-- Triángulo principal A estilizada -->
-      <path d="M100 18 L178 178 L130 178 L122 158 L78 158 L70 178 L22 178 Z"
-            fill="#4a9fd9"/>
-      <!-- Tajo diagonal interno (espacio negativo de la "A") -->
-      <path d="M100 70 L118 138 L82 138 Z" fill="#fff"/>
-      <!-- Pequeño detalle de profundidad -->
-      <path d="M130 178 L122 158 L110 158 L120 178 Z" fill="#2b7cb8" opacity=".6"/>
+    <symbol id="acepo-mark" viewBox="0 0 380 320">
+      <!-- Vela derecha de la A: triángulo sólido alto y delgado -->
+      <path d="M 188 50 L 296 280 L 230 280 L 188 175 Z" fill="#1a9cd6"/>
+      <!-- Ala izquierda en curva -->
+      <path d="M 188 50 C 175 130, 145 200, 80 280 L 215 280 C 215 280, 210 230, 188 175 Z" fill="#1a9cd6"/>
     </symbol>
   </defs>
 </svg>
@@ -941,7 +981,7 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
 <!-- ============ HEADER ============ -->
 <header class="app-header">
   <div class="brand">
-    <svg class="acepo-logo" aria-hidden="true"><use href="#acepo-logo"/></svg>
+    <svg class="acepo-logo" viewBox="0 0 380 320" aria-hidden="true"><use href="#acepo-mark"/></svg>
     <div class="brand-text">
       <span class="brand-title">ACEPO · Seguro Colectivo de Vida</span>
       <span class="brand-sub">Asociación Cultural y Educativa Para La Policía · Más de 40 años protegiendo familias</span>
@@ -982,7 +1022,7 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
 <div class="hero">
   <div class="agent-chip">
     <div class="avatar-logo">
-      <svg viewBox="0 0 200 200" width="24" height="24" aria-hidden="true"><use href="#acepo-logo"/></svg>
+      <svg viewBox="0 0 380 320" width="26" height="22" aria-hidden="true"><use href="#acepo-mark"/></svg>
     </div>
     <div class="agent-chip-info">
       <span class="agent-chip-name">ACEPO</span>
@@ -1038,7 +1078,7 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
         <div class="amount">¢15.000.000 <span class="small">a beneficiarios</span></div>
         <div class="bento-detail">
           La <b>cobertura base de la póliza</b>: si el asegurado fallece por cualquier causa (natural o accidental), los beneficiarios reciben <b>¢15.000.000</b>.
-          <div class="detail-row"><span class="bullet">▸</span><div><b>Adelanto por enfermedad terminal — ¢7.500.000:</b> si le diagnostican una enfermedad terminal, ACEPO adelanta el <b>50% de la suma asegurada</b> en vida del asegurado, para que la use en lo que necesite.</div></div>
+          <div class="detail-row"><span class="bullet">▸</span><div><b>Adelanto por enfermedad terminal — ¢7.500.000:</b> si le diagnostican una enfermedad terminal, <b>el INS por medio de ACEPO</b> le adelanta el <b>50% de la suma asegurada</b> en vida del asegurado, para que la use en lo que necesite.</div></div>
           <div class="detail-row"><span class="bullet">▸</span><div><b>Adelanto para gastos funerarios — ¢2.000.000:</b> en caso de fallecimiento, se adelanta hasta el <b>20% (máximo ¢2 millones)</b> para cubrir los gastos funerarios de inmediato, sin esperar el trámite completo del seguro.</div></div>
           <div class="detail-row"><span class="bullet">▸</span><div>Aplica un período de <b>disputabilidad y carencia de 2 años</b> contados desde la inclusión en la póliza (suicidio y SIDA/HIV).</div></div>
         </div>
@@ -1067,13 +1107,14 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
           <span class="chevron" aria-hidden="true">▾</span>
         </div>
         <h3>Incapacidad Total y Permanente</h3>
-        <p class="desc">Si una enfermedad o accidente le incapacita de por vida, recibe el monto en vida.</p>
-        <div class="amount">¢15.000.000 <span class="small">en un solo tracto</span></div>
+        <p class="desc">Si queda con incapacidad permanente declarada "no sujeta a revisión", recibe el monto en vida.</p>
+        <div class="amount">¢15.000.000 <span class="small">adelanto en vida, en un solo tracto</span></div>
         <div class="bento-detail">
-          Si el asegurado sufre <b>invalidez total y permanente</b> por enfermedad o accidente que le impida volver a trabajar, ACEPO le paga <b>¢15.000.000 en un solo tracto, en vida</b>.
-          <div class="detail-row"><span class="bullet">▸</span><div><b>No queda sujeto a revisión de la CCSS:</b> a diferencia de la incapacidad de la CCSS (que puede revisarse y revocarse), este pago es definitivo desde el momento de la indemnización.</div></div>
+          Con el documento que emite la <b>Unidad Calificadora de la CCSS</b> donde indique que el asegurado queda <b>incapacitado permanente, NO SUJETO A REVISIÓN</b>, <b>el INS por medio de ACEPO</b> le adelanta <b>en vida y en un solo tracto el monto asegurado de ¢15.000.000</b>.
+          <div class="detail-row"><span class="bullet">▸</span><div><b>Requisito:</b> dictamen de la Unidad Calificadora de la CCSS con la calificación <b>"no sujeto a revisión"</b>.</div></div>
           <div class="detail-row"><span class="bullet">▸</span><div>En el contrato esta cobertura figura como <b>BI-1 — Pago Adelantado de la Suma Asegurada por Incapacidad Total y Permanente</b>.</div></div>
           <div class="detail-row"><span class="bullet">▸</span><div>Permite usar el dinero para lo que más necesite: tratamientos, adaptaciones del hogar, sostener a la familia.</div></div>
+          <div class="detail-row"><span class="bullet">▸</span><div><b>Importante:</b> al recibir el adelanto en vida, la <b>cobertura de muerte posterior queda sin efecto</b> (es el mismo monto asegurado, adelantado).</div></div>
         </div>
       </div>
 
@@ -1166,7 +1207,6 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
           <span class="pill gold">🎁 Rifas</span>
           <span class="pill gold">🍽️ Comida</span>
         </div>
-        <div class="stat">40+ <span class="unit">años acompañando familias</span></div>
       </div>
 
       <div class="benefit-block">
@@ -1176,12 +1216,12 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
           <span class="pill">✓ Póliza 0101VTM0000704</span>
           <span class="pill">✓ Registro SUGESE</span>
         </div>
-        <div class="stat">¢5.000+<span class="unit"> millones pagados en siniestros</span></div>
+        <div class="stat">+5 mil M <span class="unit">de colones pagados en siniestros</span></div>
       </div>
 
       <div class="benefit-block">
         <h3><span class="ico">💛</span> Sin fines de lucro</h3>
-        <p class="lead">Desde 1983, ACEPO opera como <b>asociación solidaria orientada al servicio</b>, no a la ganancia. Cada colón que aporta vuelve a los asociados.</p>
+        <p class="lead">Desde 1983, ACEPO opera como <b>asociación solidaria orientada al servicio</b>, <b>sin fines de lucro</b>. Cada colón que aporta vuelve a los asociados.</p>
         <div class="pill-row">
           <span class="pill">Orientación solidaria</span>
           <span class="pill">Compromiso social</span>
@@ -1276,17 +1316,17 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
       <div class="step-card">
         <div class="num-badge">1</div>
         <h3>Verifique requisitos</h3>
-        <p>Edad entre 18 y 39 años con 11 meses, ser asociado o asociable a ACEPO, y firmar la declaración de salud V7.</p>
+        <p>Tener entre <b>18 y 39 años con 11 meses</b>. Ese es el único requisito para afiliarse.</p>
       </div>
       <div class="step-card">
         <div class="num-badge">2</div>
-        <h3>Llene el formulario</h3>
-        <p>Complete la solicitud en línea con sus datos, sus beneficiarios y la declaración de salud. Le tomará menos de 10 minutos.</p>
+        <h3>Autogestión en línea</h3>
+        <p>Complete el <b>formulario en autogestión</b> con sus datos y los de sus beneficiarios. <b>Toma menos de 3 minutos</b> · sin declaración de salud, sin papeleo extra.</p>
       </div>
       <div class="step-card">
         <div class="num-badge">3</div>
         <h3>Quedará protegido</h3>
-        <p>Una vez aprobado, recibe su certificado de seguro y el cobro empieza automáticamente por planilla. Su familia queda protegida desde ese momento.</p>
+        <p>Recibe su certificado de seguro y el cobro empieza automáticamente por planilla. Su familia queda protegida desde ese momento.</p>
       </div>
     </div>
 
@@ -1299,8 +1339,12 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
         <span style="font-size:18px">→</span>
       </a>
       <br/>
-      <a class="cta-secondary" href="https://wa.me/50686248757?text=Hola%2C%20quisiera%20información%20sobre%20la%20afiliación%20a%20ACEPO" target="_blank" rel="noopener">
-        💬 Prefiero hablar primero por WhatsApp
+      <a class="cta-whatsapp" href="https://wa.me/50686248757?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20la%20afiliaci%C3%B3n%20a%20ACEPO" target="_blank" rel="noopener" aria-label="Escribir a ACEPO por WhatsApp al 8624-8757">
+        <span class="wa-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.001 3C8.82 3 3 8.82 3 16c0 2.293.601 4.55 1.74 6.52L3 29l6.673-1.715A12.94 12.94 0 0 0 16.001 29C23.181 29 29 23.18 29 16c0-3.471-1.351-6.733-3.81-9.19A12.92 12.92 0 0 0 16 3zm.001 23.6c-1.985 0-3.929-.531-5.62-1.536l-.404-.24-3.962 1.019 1.057-3.864-.262-.412A10.55 10.55 0 0 1 5.4 16c0-5.844 4.756-10.6 10.601-10.6 2.832 0 5.494 1.103 7.495 3.106A10.53 10.53 0 0 1 26.6 16c0 5.845-4.756 10.6-10.6 10.6zm5.811-7.937c-.318-.16-1.883-.929-2.175-1.034-.292-.107-.504-.16-.717.16-.213.318-.823 1.033-1.009 1.245-.187.213-.372.24-.69.08-.318-.16-1.343-.495-2.558-1.578a9.51 9.51 0 0 1-1.762-2.193c-.184-.318-.02-.49.14-.65.144-.142.318-.372.477-.557.16-.187.213-.32.318-.532.107-.213.054-.4-.027-.557-.08-.16-.717-1.728-.982-2.367-.258-.62-.521-.535-.717-.545l-.611-.011c-.213 0-.557.08-.85.4-.293.318-1.116 1.09-1.116 2.66s1.142 3.083 1.302 3.296c.16.213 2.247 3.432 5.444 4.81.761.328 1.353.524 1.816.671.762.243 1.456.209 2.005.127.611-.091 1.883-.77 2.149-1.514.265-.745.265-1.382.186-1.515-.08-.135-.292-.213-.61-.373z"/></svg>
+        </span>
+        <span>WhatsApp ACEPO</span>
+        <span class="wa-number">8624-8757</span>
       </a>
     </div>
 
@@ -1327,7 +1371,7 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="footer-logos">
-    <svg class="footer-logo" viewBox="0 0 200 200" aria-hidden="true"><use href="#acepo-logo"/></svg>
+    <img class="footer-acepo-logo" src="img/acepo-logo.svg" alt="ACEPO — Tranquilidad para usted. Seguridad para ellos." />
     <div class="footer-logo-divider"></div>
     <img class="footer-ins-logo" src="img/ins-blanco.png" alt="INS" />
   </div>

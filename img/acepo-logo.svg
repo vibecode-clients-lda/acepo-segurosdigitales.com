@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 380" width="380" height="380" fill="none">
+  <!-- Vela derecha de la A: triangulo solido alto y delgado -->
+  <path d="M 188 50 L 296 280 L 230 280 L 188 175 Z" fill="#1a9cd6"/>
+  <!-- Ala izquierda en curva -->
+  <path d="M 188 50 C 175 130, 145 200, 80 280 L 215 280 C 215 280, 210 230, 188 175 Z" fill="#1a9cd6"/>
+  <!-- ACEPO -->
+  <text x="190" y="332" font-family="'Outfit', 'Segoe UI', sans-serif" font-size="48" font-weight="500" letter-spacing="14" text-anchor="middle" fill="#9ca3af">ACEPO</text>
+  <!-- Tagline -->
+  <text x="190" y="355" font-family="'DM Sans', 'Segoe UI', sans-serif" font-size="11" font-weight="400" letter-spacing="1.2" text-anchor="middle" fill="#9ca3af">TRANQUILIDAD PARA USTED. SEGURIDAD PARA ELLOS.</text>
+</svg>
