@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACEPO — Seguro Colectivo de Vida · Tranquilidad para usted, seguridad para ellos</title>
+<meta name="description" content="Seguro colectivo de vida ACEPO respaldado por el INS. ¢15 millones de protección, doble indemnización accidental, beneficio familiar y medicina virtual. Para funcionarios públicos y sus familias.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0c2340;
+  --teal: #06b6d4;
+  --teal-deep: #0e7490;
+  --teal-bright: #22d3ee;
+  --teal-light: #67e8f9;
+  --teal-bg: #ecfeff;
+  --acepo-blue: #4a9fd9;
+  --acepo-blue-deep: #2b7cb8;
+  --green-fresh: #10b981;
+  --green-light: #34d399;
+  --green-deep: #059669;
+  --green-text: #047857;
+  --green-bg: #d1fae5;
+  --gold-bg: #fef3c7;
+  --gold-mid: #fbbf24;
+  --gold-deep: #f59e0b;
+  --gold-text: #78350f;
+  --bg: #f8fafc;
+  --border: #e0e7ef;
+  --muted: #64748b;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: #1e293b;
+  line-height: 1.55;
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ============ HEADER ============ */
+.app-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.brand { display: flex; align-items: center; gap: 14px; }
+.acepo-logo {
+  width: 44px;
+  height: 44px;
+  display: block;
+  flex-shrink: 0;
+}
+.brand-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 255, 255, .18);
+  margin: 0 6px;
+  align-self: center;
+  flex-shrink: 0;
+}
+.ins-logo {
+  height: 40px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .25));
+}
+.ins-respaldo-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, .55);
+  display: block;
+  margin-bottom: 2px;
+}
+.ins-respaldo-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+}
+@media (max-width: 720px) {
+  .ins-logo { height: 32px; }
+  .brand-divider { display: none; }
+  .ins-respaldo-label { display: none; }
+}
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+.brand-sub { font-size: 11px; opacity: .65; margin-top: 2px; }
+.header-right { display: flex; align-items: center; gap: 10px; }
+.pill-ins {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(13, 148, 136, .15);
+  color: #5eead4;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid rgba(13, 148, 136, .3);
+}
+.header-meta { text-align: right; font-size: 10px; opacity: .8; line-height: 1.3; }
+.header-meta b { color: #fff; opacity: 1; }
+
+/* ============ CINTA DORADA ============ */
+.gold-ribbon {
+  background: linear-gradient(90deg, var(--gold-bg) 0%, #fefce8 50%, var(--gold-bg) 100%);
+  border-bottom: 1px solid #fde68a;
+  padding: 9px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--gold-text);
+  text-align: center;
+}
+.gold-ribbon .star { color: #ca8a04; }
+.gold-ribbon b {
+  color: #422006;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* ============ STICKY NAV ============ */
+.sticky-nav {
+  position: sticky;
+  top: 14px;
+  z-index: 50;
+  margin: 14px auto;
+  max-width: 760px;
+  background: rgba(255, 255, 255, .92);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 4px 16px rgba(12, 35, 64, .08);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity .3s ease-out, transform .3s ease-out;
+  pointer-events: none;
+}
+.sticky-nav.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.sticky-nav .nav-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; font-weight: 700;
+  color: var(--teal-deep);
+}
+.sticky-nav .nav-dots {
+  display: flex; gap: 4px; align-items: center; flex: 1; flex-wrap: wrap;
+}
+.sticky-dot {
+  display: flex; align-items: center; gap: 4px;
+  cursor: pointer;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 10px; font-weight: 600;
+  color: var(--muted);
+  transition: all .25s ease-out;
+  border: none; background: none;
+  font-family: 'Inter', sans-serif;
+}
+.sticky-dot .num {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: #cbd5e1; color: #fff;
+  display: grid; place-items: center;
+  font-size: 9px; font-weight: 700;
+  transition: all .25s ease-out;
+}
+.sticky-dot.active { background: var(--teal-bg); color: var(--teal-deep); }
+.sticky-dot.active .num { background: var(--teal); transform: scale(1.15); }
+.sticky-dot.done .num { background: var(--green-fresh); }
+.sticky-dot:hover { background: #f1f5f9; }
+@media (max-width: 720px) {
+  .sticky-nav { margin: 10px; padding: 6px 10px; gap: 8px; }
+  .sticky-nav .nav-label { display: none; }
+  .sticky-nav .nav-dots { gap: 6px; justify-content: center; }
+  .sticky-dot { padding: 4px; }
+  .sticky-dot span:not(.num) { display: none; }
+  .sticky-dot .num { width: 22px; height: 22px; font-size: 11px; }
+}
+
+/* ============ HERO ============ */
+.hero {
+  background: linear-gradient(180deg, #fff 0%, var(--teal-bg) 100%);
+  margin: 0 auto;
+  max-width: 880px;
+  padding: 36px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.agent-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 14px 5px 5px;
+  align-self: flex-start;
+  box-shadow: 0 2px 6px rgba(12, 35, 64, .06);
+}
+.agent-chip .avatar-logo {
+  width: 34px; height: 34px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  padding: 4px;
+}
+.agent-chip-info { display: flex; flex-direction: column; line-height: 1.15; }
+.agent-chip-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--teal-deep);
+}
+.agent-chip-role { font-size: 10px; color: var(--muted); }
+
+.bubble {
+  background: linear-gradient(180deg, #fff 0%, #f8fbff 100%);
+  border: 1px solid var(--border);
+  border-radius: 16px 16px 16px 4px;
+  padding: 22px 26px 22px 30px;
+  box-shadow: 0 6px 22px rgba(12, 35, 64, .07), 0 1px 3px rgba(6, 182, 212, .08);
+  font-size: 15px;
+  color: #1e293b;
+  margin-left: 22px;
+  max-width: 92%;
+  position: relative;
+  overflow: hidden;
+}
+.bubble::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--teal), var(--green-fresh));
+}
+.bubble .greet {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+  display: block;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.bubble .greet .accent {
+  color: var(--teal-deep);
+  font-weight: 800;
+}
+.bubble b { color: var(--teal-deep); }
+.bubble .roadmap {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: var(--teal-bg);
+  border-radius: 10px;
+  border-left: 3px solid var(--teal);
+  font-size: 13px;
+  color: var(--teal-deep);
+}
+
+.progress-line {
+  display: flex; align-items: center; gap: 8px;
+  margin-left: 22px;
+  font-size: 11px; color: var(--muted);
+}
+.progress-line .label { font-weight: 600; }
+.progress-line .dots { display: flex; gap: 4px; }
+.progress-line .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #cbd5e1;
+}
+.progress-line .dot.active { background: var(--teal); transform: scale(1.2); }
+.progress-line .step-label { color: var(--teal-deep); font-weight: 600; }
+
+.cta-pill {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--teal), var(--teal-deep));
+  color: #fff;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(6, 182, 212, .35);
+  align-self: center;
+  margin-top: 8px;
+  cursor: pointer;
+  border: none;
+  font-family: 'Inter', sans-serif;
+}
+.cta-pill:hover { transform: translateY(-1px); }
+
+/* ============ MAIN ============ */
+main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
+
+.section {
+  margin-top: 32px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .4s ease-out, transform .4s ease-out;
+  scroll-margin-top: 100px;
+}
+.section.in-view { opacity: 1; transform: translateY(0); }
+
+.section-header { margin-bottom: 16px; }
+.section-num {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--teal-deep);
+  background: var(--teal-bg);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 8px 0 4px;
+  letter-spacing: -0.01em;
+}
+.section-sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ============ SECCIÓN 1 — COBERTURAS BENTO ============ */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media (max-width: 600px) { .bento-grid { grid-template-columns: 1fr; } }
+.bento-tile {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all .25s ease-out;
+}
+.bento-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(12, 35, 64, .08);
+  border-color: var(--teal);
+}
+.bento-tile .bento-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.bento-tile .letter {
+  display: inline-grid;
+  place-items: center;
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+}
+.bento-tile.teal .letter { background: var(--teal-deep); }
+.bento-tile.green .letter { background: var(--green-deep); }
+.bento-tile.purple .letter { background: #7c3aed; }
+.bento-tile.rose .letter { background: #e11d48; }
+.bento-tile.acepo .letter { background: var(--acepo-blue-deep); }
+.bento-tile.gold .letter { background: var(--gold-deep); }
+.bento-tile .chevron {
+  color: var(--muted);
+  font-size: 14px;
+  transition: transform .25s ease-out, color .25s ease-out;
+  user-select: none;
+}
+.bento-tile.expanded .chevron {
+  transform: rotate(180deg);
+  color: var(--teal);
+}
+.bento-tile h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 4px;
+}
+.bento-tile .desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.45;
+  margin-bottom: 8px;
+}
+.bento-tile .amount {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.bento-tile .amount .small { font-size: 11px; color: var(--muted); font-weight: 500; margin-left: 4px; }
+
+.bento-tile .bento-detail {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 1px solid transparent;
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.6;
+  transition: max-height .35s ease-out, opacity .25s ease-out, margin-top .35s ease-out, padding-top .35s ease-out;
+}
+.bento-tile .bento-detail b { color: var(--navy); }
+.bento-tile.expanded {
+  border-color: var(--teal);
+  box-shadow: 0 6px 22px rgba(6, 182, 212, .15);
+}
+.bento-tile.expanded .bento-detail {
+  max-height: 800px;
+  opacity: 1;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top-color: var(--border);
+}
+.bento-tile .detail-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 6px;
+}
+.bento-tile .detail-row .bullet {
+  color: var(--teal);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.bento-tile:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+/* Tile destacada (Muerte Plus = principal) */
+.bento-tile.featured {
+  background: linear-gradient(180deg, #fff 0%, var(--teal-bg) 100%);
+  border: 2px solid var(--teal);
+  position: relative;
+}
+.bento-tile.featured::after {
+  content: '★ Cobertura base';
+  position: absolute;
+  top: -10px;
+  right: 12px;
+  background: var(--gold-mid);
+  color: var(--gold-text);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* ============ SECCIÓN 2 — BENEFICIOS ============ */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 600px) { .benefits-grid { grid-template-columns: 1fr; } }
+.benefit-block {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+}
+.benefit-block h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  margin: 0 0 4px;
+  color: var(--navy);
+  display: flex; align-items: center; gap: 8px;
+}
+.benefit-block h3 .ico {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  background: var(--teal-bg);
+  color: var(--teal-deep);
+  display: grid; place-items: center;
+  font-size: 14px;
+}
+.benefit-block .lead {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+.benefit-block .pill-row {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.benefit-block .pill {
+  background: #f1f5f9;
+  color: var(--navy);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+.benefit-block .pill.gold { background: var(--gold-bg); color: var(--gold-text); border-color: #fde68a; }
+.benefit-block .stat {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--teal-deep);
+  margin: 8px 0 0;
+}
+.benefit-block .stat .unit { font-size: 12px; color: var(--muted); font-weight: 600; margin-left: 4px; }
+
+.convenios-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+.convenio-tag {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 8px;
+  font-size: 11px;
+  text-align: center;
+  color: var(--navy);
+  font-weight: 600;
+}
+.convenio-tag .ico {
+  font-size: 22px;
+  color: var(--teal);
+}
+
+/* ============ SECCIÓN 3 — COSTO VS PROTECCIÓN ============ */
+.cost-card {
+  background: linear-gradient(135deg, var(--navy), #1e3a5f);
+  color: #fff;
+  border-radius: 14px;
+  padding: 26px;
+  position: relative;
+  overflow: hidden;
+}
+.cost-card::before {
+  content: '';
+  position: absolute;
+  right: -50px; top: -50px;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle, rgba(6, 182, 212, .18), transparent 70%);
+  border-radius: 50%;
+}
+.cost-top {
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed rgba(255,255,255,.15);
+  position: relative;
+}
+.cost-label {
+  font-size: 11px;
+  color: var(--teal-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.cost-compare {
+  display: flex; align-items: center; gap: 18px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.cost-col-pay { text-align: left; }
+.cost-col-pay .small { font-size: 10px; opacity: .7; }
+.cost-col-pay .amt {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 28px; font-weight: 800;
+  color: var(--gold-mid);
+  line-height: 1;
+}
+.cost-col-pay .freq { font-size: 11px; opacity: .8; margin-top: 4px; }
+.cost-arrow { font-size: 22px; color: var(--gold-mid); }
+.cost-col-protect { text-align: left; }
+.cost-col-protect .small { font-size: 10px; opacity: .7; }
+.cost-col-protect .amt {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 38px; font-weight: 800;
+  color: var(--teal-light);
+  line-height: 1;
+}
+.cost-col-protect .freq { font-size: 11px; opacity: .8; margin-top: 4px; }
+.cost-side {
+  text-align: right;
+  font-size: 10px;
+  color: var(--teal-light);
+  line-height: 1.4;
+}
+
+.cost-rules {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  position: relative;
+}
+@media (max-width: 600px) { .cost-rules { grid-template-columns: 1fr; } }
+.cost-rule {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px;
+  padding: 14px;
+  display: flex; gap: 10px;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.cost-rule .icon {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+.cost-rule.ok .icon { background: var(--green-fresh); color: #fff; }
+.cost-rule.info .icon { background: var(--teal-bright); color: var(--navy); }
+.cost-rule.warn .icon { background: var(--gold-mid); color: var(--gold-text); }
+.cost-rule b { color: #fff; }
+.cost-rule .meta { font-size: 10px; color: var(--teal-light); margin-top: 4px; }
+
+/* ============ SECCIÓN 4 — CÓMO AFILIARSE ============ */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 8px;
+}
+@media (max-width: 720px) { .steps-grid { grid-template-columns: 1fr; } }
+.step-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 18px;
+  position: relative;
+}
+.step-card .num-badge {
+  position: absolute;
+  top: -14px; left: 16px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal), var(--teal-deep));
+  color: #fff;
+  display: grid; place-items: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(6, 182, 212, .35);
+}
+.step-card h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  margin: 14px 0 6px;
+  color: var(--navy);
+}
+.step-card p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.afil-cta-block {
+  margin-top: 28px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--teal-bg) 0%, #f0f9ff 100%);
+  border: 1px solid var(--teal-light);
+  border-radius: 16px;
+  padding: 28px 24px;
+}
+.afil-cta-block h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  color: var(--navy);
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+.afil-cta-block p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+.cta-rect {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--teal-deep), var(--navy));
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(14, 116, 144, .35);
+  transition: transform .2s ease-out, box-shadow .2s ease-out;
+}
+.cta-rect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(14, 116, 144, .45);
+}
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--teal-deep);
+  text-decoration: none;
+  font-weight: 600;
+}
+.cta-secondary:hover { text-decoration: underline; }
+
+/* ============ STEP NAV (botones entre secciones) ============ */
+.step-nav-btns {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 24px;
+  gap: 8px;
+}
+.step-nav-btns.right-only { justify-content: flex-end; }
+.step-btn {
+  background: #fff;
+  border: 1px solid var(--border);
+  color: var(--teal-deep);
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all .2s ease-out;
+}
+.step-btn:hover {
+  background: var(--teal-bg);
+  border-color: var(--teal);
+}
+.step-btn.next {
+  background: linear-gradient(135deg, var(--teal), var(--teal-deep));
+  color: #fff;
+  border-color: transparent;
+}
+.step-btn.next:hover { transform: translateY(-1px); }
+
+/* ============ CIERRE ============ */
+.closing {
+  margin-top: 40px;
+  text-align: center;
+  padding: 28px 20px;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+.closing .msg {
+  font-size: 15px;
+  color: var(--navy);
+  margin: 0 0 16px;
+  font-style: italic;
+}
+.closing .signature {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  color: var(--teal-deep);
+  font-weight: 700;
+}
+.closing .signature .lic {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+  margin-top: 2px;
+}
+.social-proof {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.social-proof .stars {
+  color: var(--gold-mid);
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+.social-proof p {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  background: var(--navy);
+  color: #cbd5e1;
+  padding: 28px 24px;
+  text-align: center;
+  font-size: 12px;
+  margin-top: 40px;
+}
+.footer .footer-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.footer .footer-logo {
+  width: 48px; height: 48px;
+}
+.footer .footer-logo-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 255, 255, .15);
+}
+.footer .footer-ins-logo {
+  height: 40px;
+  width: auto;
+}
+.footer .footer-brand {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.footer .contact-row {
+  display: flex; justify-content: center; gap: 18px;
+  margin: 10px 0 12px;
+  flex-wrap: wrap;
+}
+.footer .contact-row a {
+  color: var(--teal-light);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+}
+.footer .contact-row a:hover { text-decoration: underline; }
+.footer .legal {
+  font-size: 10px;
+  color: #94a3b8;
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 12px auto 0;
+}
+
+/* ============ FLOATING NAV ============ */
+.float-nav {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(12, 35, 64, .92);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  border-radius: 999px;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 40;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .3s ease-out, transform .3s ease-out;
+  pointer-events: none;
+}
+.float-nav.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.float-nav button {
+  background: rgba(255,255,255,.1);
+  color: #fff;
+  border: none;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background .2s ease-out;
+}
+.float-nav button:hover:not(:disabled) { background: var(--teal); }
+.float-nav button:disabled { opacity: .35; cursor: default; }
+.float-nav .ctr {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 0 8px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LOGO ACEPO REUTILIZABLE (SVG) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="acepo-logo" viewBox="0 0 200 200">
+      <!-- Triángulo principal A estilizada -->
+      <path d="M100 18 L178 178 L130 178 L122 158 L78 158 L70 178 L22 178 Z"
+            fill="#4a9fd9"/>
+      <!-- Tajo diagonal interno (espacio negativo de la "A") -->
+      <path d="M100 70 L118 138 L82 138 Z" fill="#fff"/>
+      <!-- Pequeño detalle de profundidad -->
+      <path d="M130 178 L122 158 L110 158 L120 178 Z" fill="#2b7cb8" opacity=".6"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header class="app-header">
+  <div class="brand">
+    <svg class="acepo-logo" aria-hidden="true"><use href="#acepo-logo"/></svg>
+    <div class="brand-text">
+      <span class="brand-title">ACEPO · Seguro Colectivo de Vida</span>
+      <span class="brand-sub">Asociación Cultural y Educativa Para La Policía · Más de 35 años protegiendo familias</span>
+    </div>
+    <div class="brand-divider"></div>
+    <div class="ins-respaldo-stack">
+      <span class="ins-respaldo-label">Respaldado por</span>
+      <img class="ins-logo" src="img/ins-blanco.png" alt="Instituto Nacional de Seguros" />
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="header-meta">
+      Póliza madre <b>0101VTM0000704</b><br/>
+      Vigente · Modalidad contributiva
+    </div>
+  </div>
+</header>
+
+<!-- ============ CINTA DORADA ============ -->
+<div class="gold-ribbon">
+  <span class="star">✦</span>
+  <b>TRANQUILIDAD PARA USTED. SEGURIDAD PARA ELLOS.</b>
+  <span class="star">✦</span>
+</div>
+
+<!-- ============ STICKY NAV ============ -->
+<nav class="sticky-nav" id="stickyNav">
+  <span class="nav-label">Recorrido</span>
+  <div class="nav-dots">
+    <button class="sticky-dot active" data-target="s1"><span class="num">1</span><span>Coberturas</span></button>
+    <button class="sticky-dot" data-target="s2"><span class="num">2</span><span>Beneficios</span></button>
+    <button class="sticky-dot" data-target="s3"><span class="num">3</span><span>Costo</span></button>
+    <button class="sticky-dot" data-target="s4"><span class="num">4</span><span>Afiliación</span></button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="agent-chip">
+    <div class="avatar-logo">
+      <svg viewBox="0 0 200 200" width="24" height="24" aria-hidden="true"><use href="#acepo-logo"/></svg>
+    </div>
+    <div class="agent-chip-info">
+      <span class="agent-chip-name">ACEPO</span>
+      <span class="agent-chip-role">Su asociación · Lo acompaña paso a paso</span>
+    </div>
+  </div>
+
+  <div class="bubble">
+    <span class="greet">Para usted, <span class="accent">que sirve y protege</span> 🛡️</span>
+    En ACEPO, creemos que <b>quien dedica su vida al servicio público</b> merece un respaldo a la altura. Por eso le ofrecemos un <b>seguro colectivo de vida con el INS</b> que protege a su familia hasta con <b>¢30 millones</b>, por menos de <b>¢9.000 al mes</b>.
+    <div class="roadmap">
+      <b>Lo que verá en esta página:</b><br/>
+      6 coberturas que protegen a su familia · beneficios extra (medicina virtual + convenios + actividades) · lo poco que paga vs lo mucho que se lleva · y cómo afiliarse en 3 pasos.
+    </div>
+  </div>
+
+  <div class="progress-line">
+    <span class="label">Recorrido:</span>
+    <div class="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+    <span class="step-label">Paso 1 de 4</span>
+  </div>
+
+  <button class="cta-pill" onclick="document.getElementById('s1').scrollIntoView({behavior:'smooth'})">
+    ▶ Conozca su protección
+  </button>
+</div>
+
+<!-- ============ MAIN ============ -->
+<main>
+
+  <!-- ============ SECCIÓN 1 — COBERTURAS ============ -->
+  <section class="section" id="s1">
+    <div class="section-header">
+      <span class="section-num">🛡️ Sección 1 · Su recorrido</span>
+      <h2 class="section-title">6 coberturas que protegen a su familia</h2>
+      <p class="section-sub">Toque cada tarjeta para ver el detalle completo de la cobertura, montos exactos y cómo funciona.</p>
+    </div>
+
+    <div class="bento-grid">
+      <!-- COBERTURA 1 — MUERTE PLUS (destacada) -->
+      <div class="bento-tile teal featured" role="button" tabindex="0" aria-expanded="false">
+        <div class="bento-head">
+          <span class="letter">1</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </div>
+        <h3>Muerte Plus</h3>
+        <p class="desc">La cobertura base. Si usted falta, su familia recibe el monto completo.</p>
+        <div class="amount">¢15.000.000 <span class="small">a beneficiarios</span></div>
+        <div class="bento-detail">
+          La <b>cobertura base de la póliza</b>: si el asegurado fallece por cualquier causa (natural o accidental), los beneficiarios reciben <b>¢15.000.000</b>.
+          <div class="detail-row"><span class="bullet">▸</span><div><b>Adelanto por enfermedad terminal — ¢7.500.000:</b> si le diagnostican una enfermedad terminal, ACEPO adelanta el <b>50% de la suma asegurada</b> en vida del asegurado, para que la use en lo que necesite.</div></div>
+          <div class="detail-row"><span class="bullet">▸</span><div><b>Adelanto para gastos funerarios — ¢2.000.000:</b> en caso de fallecimiento, se adelanta hasta el <b>20% (máximo ¢2 millones)</b> para cubrir los gastos funerarios de inmediato, sin esperar el trámite completo del seguro.</div></div>
+          <div class="detail-row"><span class="bullet">▸</span><div>Aplica un período de <b>disputabilidad y carencia de 2 años</b> contados desde la inclusión en la póliza (suicidio y SIDA/HIV).</div></div>
+        </div>
+      </div>
+
+      <!-- COBERTURA 2 — MUERTE ACCIDENTAL (DID) -->
+      <div class="bento-tile green" role="button" tabindex="0" aria-expanded="false">
+        <div class="bento-head">
+          <span class="letter">2</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </div>
+        <h3>Muerte Accidental · Doble Indemnización</h3>
+        <p class="desc">Si el fallecimiento es por accidente, su familia recibe el <b>doble</b>.</p>
+        <div class="amount">¢30.000.000 <span class="small">si es accidental</span></div>
+        <div class="bento-detail">
+          Esta cobertura adicional <b>duplica la suma asegurada</b> cuando el fallecimiento del asegurado ocurre a causa de un <b>accidente</b> (no por enfermedad). Sus beneficiarios reciben <b>¢30 millones</b> en total: los ¢15M de la cobertura base + ¢15M adicionales por la doble indemnización accidental.
+          <div class="detail-row"><span class="bullet">▸</span><div><b>Desmembramiento o pérdida de la vista:</b> si por causa accidental sufre desmembramiento o pérdida de la vista, se indemniza <b>según la tabla del INS</b> (variable según el órgano y grado de lesión).</div></div>
+          <div class="detail-row"><span class="bullet">▸</span><div>Cobertura conocida en el contrato como <b>DID — Doble Indemnización por Muerte Accidental, Desmembramiento o Pérdida de la Vista</b>.</div></div>
+        </div>
+      </div>
+
+      <!-- COBERTURA 3 — INCAPACIDAD TOTAL Y PERMANENTE (BI-1) -->
+      <div class="bento-tile purple" role="button" tabindex="0" aria-expanded="false">
+        <div class="bento-head">
+          <span class="letter">3</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </div>
+        <h3>Incapacidad Total y Permanente</h3>
+        <p class="desc">Si una enfermedad o accidente le incapacita de por vida, recibe el monto en vida.</p>
+        <div class="amount">¢15.000.000 <span class="small">en un solo tracto</span></div>
+        <div class="bento-detail">
+          Si el asegurado sufre <b>invalidez total y permanente</b> por enfermedad o accidente que le impida volver a trabajar, ACEPO le paga <b>¢15.000.000 en un solo tracto, en vida</b>.
+          <div class="detail-row"><span class="bullet">▸</span><div><b>No queda sujeto a revisión de la CCSS:</b> a diferencia de la incapacidad de la CCSS (que puede revisarse y revocarse), este pago es definitivo desde el momento de la indemnización.</div></div>
+          <div class="detail-row"><span class="bullet">▸</span><div>En el contrato esta cobertura figura como <b>BI-1 — Pago Adelantado de la Suma Asegurada por Incapacidad Total y Permanente</b>.</div></div>
+          <div class="detail-row"><span class="bullet">▸</span><div>Permite usar el dinero para lo que más necesite: tratamientos, adaptaciones del hogar, sostener a la familia.</div></div>
+        </div>
+      </div>
+
+      <!-- COBERTURA 4 — BENEFICIO FAMILIAR -->
+      <div class="bento-tile rose" role="button" tabindex="0" aria-expanded="false">
+        <div class="bento-head">
+          <span class="letter">4</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </div>
+        <h3>Beneficio Familiar · Cónyuge e Hijos</h3>
+        <p class="desc">Su seguro también protege a su cónyuge y a sus hijos.</p>
+        <div class="amount">hasta ¢7.500.000 <span class="small">por miembro</span></div>
+        <div class="bento-detail">
+          La póliza ACEPO no solo lo cubre a usted: también protege a su <b>cónyuge o conviviente</b> e <b>hijos</b>:
+          <div class="detail-row"><span class="bullet">▸</span><div><b>Fallecimiento del cónyuge o conviviente — ¢7.500.000</b> (50% de la suma asegurada).</div></div>
+          <div class="detail-row"><span class="bullet">▸</span><div><b>Fallecimiento de hijos — ¢3.750.000 cada uno</b> (25% de la suma asegurada), máximo 2 hijos. Cubre desde los 14 días de nacido hasta los <b>18 años</b>, o hasta los <b>23 años si son estudiantes y dependen económicamente del asegurado</b>.</div></div>
+          <div class="detail-row"><span class="bullet">▸</span><div>Conviviente = persona que cohabita con el asegurado por más de 3 años en unión de hecho pública, notoria, única y estable (sin distinción de género).</div></div>
+          <div class="detail-row"><span class="bullet">▸</span><div>Cubre tanto muerte accidental como no accidental.</div></div>
+        </div>
+      </div>
+
+      <!-- COBERTURA 5 — COBERTURA MUTUAL ACEPO (aparte) -->
+      <div class="bento-tile acepo" role="button" tabindex="0" aria-expanded="false">
+        <div class="bento-head">
+          <span class="letter">5</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </div>
+        <h3>Cobertura Mutual ACEPO</h3>
+        <p class="desc">Beneficio solidario adicional, propio de ACEPO — sin papeleo extra.</p>
+        <div class="amount">+¢400.000 <span class="small">complemento solidario</span></div>
+        <div class="bento-detail">
+          Como ACEPO es una <b>asociación solidaria sin fines de lucro</b>, además de la póliza con el INS, brindamos una <b>cobertura mutual adicional</b> que se suma a los montos anteriores:
+          <div class="detail-row"><span class="bullet">▸</span><div><b>Fallecimiento del asegurado directo — ¢400.000</b></div></div>
+          <div class="detail-row"><span class="bullet">▸</span><div><b>Fallecimiento del cónyuge asegurado — ¢200.000</b></div></div>
+          <div class="detail-row"><span class="bullet">▸</span><div><b>Fallecimiento de hijos — ¢100.000 por cada uno</b> (máximo 2 hijos menores de 23 años, dependientes directos y estudiantes).</div></div>
+          <div class="detail-row"><span class="bullet">▸</span><div>Se paga <b>en adición</b> a las coberturas de la póliza INS, sin trámites separados.</div></div>
+        </div>
+      </div>
+
+      <!-- COBERTURA 6 — MEDICINA VIRTUAL -->
+      <div class="bento-tile gold" role="button" tabindex="0" aria-expanded="false">
+        <div class="bento-head">
+          <span class="letter">6</span>
+          <span class="chevron" aria-hidden="true">▾</span>
+        </div>
+        <h3>Medicina Virtual · 6 consultas/año</h3>
+        <p class="desc">Atención médica por video, sin costo, desde donde esté.</p>
+        <div class="amount">100% gratis <span class="small">6 consultas anuales</span></div>
+        <div class="bento-detail">
+          El asegurado tiene acceso a <b>medicina virtual</b> mediante la cual un profesional de la salud le brinda orientación médica por video o teléfono:
+          <div class="detail-row"><span class="bullet">▸</span><div><b>100% cubierto</b> — usted no asume ningún costo de la consulta virtual.</div></div>
+          <div class="detail-row"><span class="bullet">▸</span><div><b>Hasta 6 consultas virtuales por persona, por año-póliza</b>, mientras la póliza esté vigente.</div></div>
+          <div class="detail-row"><span class="bullet">▸</span><div>El médico puede diagnosticar, prescribir tratamiento o referir exámenes. Los costos de medicamentos o exámenes adicionales corren por su cuenta (no son parte de esta asistencia).</div></div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="step-nav-btns right-only">
+      <button class="step-btn next" data-target="s2">Siguiente: Beneficios extra →</button>
+    </nav>
+  </section>
+
+  <!-- ============ SECCIÓN 2 — BENEFICIOS ============ -->
+  <section class="section" id="s2">
+    <div class="section-header">
+      <span class="section-num">🎁 Sección 2 · Su recorrido</span>
+      <h2 class="section-title">Lo que también recibe al ser asociado</h2>
+      <p class="section-sub">ACEPO va más allá del seguro: convenios comerciales, actividades sociales y respaldo institucional.</p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-block">
+        <h3><span class="ico">🤝</span> Convenios comerciales</h3>
+        <p class="lead">Como asociado de ACEPO accede a tarifas preferenciales con nuestros aliados.</p>
+        <div class="convenios-list">
+          <div class="convenio-tag"><span class="ico">🏨</span>Hotel Arenas</div>
+          <div class="convenio-tag"><span class="ico">🕊️</span>Funeraria Polini</div>
+          <div class="convenio-tag"><span class="ico">🚗</span>Adobe Rent a Car</div>
+          <div class="convenio-tag"><span class="ico">👓</span>Ópticas Visión</div>
+          <div class="convenio-tag"><span class="ico">🔬</span>Asembis</div>
+        </div>
+      </div>
+
+      <div class="benefit-block">
+        <h3><span class="ico">🎉</span> Actividades sociales</h3>
+        <p class="lead">Dos fiestas al año para asociados y familias, con experiencias diseñadas para usted.</p>
+        <div class="pill-row">
+          <span class="pill gold">🎤 Música</span>
+          <span class="pill gold">💃 Baile</span>
+          <span class="pill gold">🎁 Rifas</span>
+          <span class="pill gold">🍽️ Comida</span>
+        </div>
+        <div class="stat">35+ <span class="unit">años acompañando familias</span></div>
+      </div>
+
+      <div class="benefit-block">
+        <h3><span class="ico">🏛️</span> Respaldo institucional</h3>
+        <p class="lead">ACEPO opera con el respaldo del <b>Instituto Nacional de Seguros</b>, la aseguradora más sólida del país.</p>
+        <div class="pill-row">
+          <span class="pill">✓ Póliza 0101VTM0000704</span>
+          <span class="pill">✓ Registro SUGESE</span>
+        </div>
+        <div class="stat">¢5.000+<span class="unit"> millones pagados en siniestros</span></div>
+      </div>
+
+      <div class="benefit-block">
+        <h3><span class="ico">💛</span> Sin fines de lucro</h3>
+        <p class="lead">Desde 1983, ACEPO opera como <b>asociación solidaria orientada al servicio</b>, no a la ganancia. Cada colón que aporta vuelve a los asociados.</p>
+        <div class="pill-row">
+          <span class="pill">Orientación solidaria</span>
+          <span class="pill">Compromiso social</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="step-nav-btns">
+      <button class="step-btn prev" data-target="s1">← Coberturas</button>
+      <button class="step-btn next" data-target="s3">Siguiente: Costo →</button>
+    </nav>
+  </section>
+
+  <!-- ============ SECCIÓN 3 — COSTO VS PROTECCIÓN ============ -->
+  <section class="section" id="s3">
+    <div class="section-header">
+      <span class="section-num">💰 Sección 3 · Su recorrido</span>
+      <h2 class="section-title">Lo que paga vs lo que protege</h2>
+      <p class="section-sub">Una comparación honesta de cuánto cuesta este respaldo y cuánto trabaja por su familia.</p>
+    </div>
+
+    <div class="cost-card">
+      <div class="cost-top">
+        <div>
+          <div class="cost-label">Su inversión mensual</div>
+          <div class="cost-compare">
+            <div class="cost-col-pay">
+              <div class="small">Usted paga</div>
+              <div class="amt">¢8.631</div>
+              <div class="freq">por mes · ó ¢4.316 quincenal</div>
+            </div>
+            <span class="cost-arrow">→</span>
+            <div class="cost-col-protect">
+              <div class="small">Su familia recibe hasta</div>
+              <div class="amt">¢30.000.000</div>
+              <div class="freq">en caso accidental + beneficios familiares</div>
+            </div>
+          </div>
+        </div>
+        <div class="cost-side">
+          Rebajo<br/>directo<br/>de planilla
+        </div>
+      </div>
+
+      <div class="cost-rules">
+        <div class="cost-rule ok">
+          <div class="icon">✓</div>
+          <div>
+            <b>Se rebaja de planilla</b> automáticamente.<br/>No tiene que ir a pagar a ningún lado, ni preocuparse por morosidad.
+            <div class="meta">Modalidad contributiva</div>
+          </div>
+        </div>
+        <div class="cost-rule info">
+          <div class="icon">📅</div>
+          <div>
+            <b>Edad de afiliación: 18 a 39 años con 11 meses.</b><br/>Si está dentro de ese rango, puede afiliarse hoy mismo. Una vez asegurado, mantiene la cobertura mientras conserve su condición de asociado.
+            <div class="meta">Cláusula VII · Elegibilidad individual</div>
+          </div>
+        </div>
+        <div class="cost-rule warn">
+          <div class="icon">!</div>
+          <div>
+            <b>Disputabilidad y carencia: 2 años.</b><br/>Aplica únicamente para suicidio y SIDA/HIV, contados desde la fecha de inclusión en la póliza.
+            <div class="meta">Cláusulas X y XI</div>
+          </div>
+        </div>
+        <div class="cost-rule ok">
+          <div class="icon">✓</div>
+          <div>
+            <b>Sin pruebas médicas iniciales</b> según la tabla de asegurabilidad estándar — solo declaración de salud para la mayoría de los casos.
+            <div class="meta">Cláusula IV · Tabla de requisitos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="step-nav-btns">
+      <button class="step-btn prev" data-target="s2">← Beneficios</button>
+      <button class="step-btn next" data-target="s4">Siguiente: Afiliación →</button>
+    </nav>
+  </section>
+
+  <!-- ============ SECCIÓN 4 — CÓMO AFILIARSE ============ -->
+  <section class="section" id="s4">
+    <div class="section-header">
+      <span class="section-num">📝 Sección 4 · Su recorrido</span>
+      <h2 class="section-title">Afiliarse toma 3 pasos</h2>
+      <p class="section-sub">Un proceso sencillo, sin filas ni papeleo innecesario. Lo guiamos desde el primer minuto.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="num-badge">1</div>
+        <h3>Verifique requisitos</h3>
+        <p>Edad entre 18 y 39 años con 11 meses, ser asociado o asociable a ACEPO, y firmar la declaración de salud V7.</p>
+      </div>
+      <div class="step-card">
+        <div class="num-badge">2</div>
+        <h3>Llene el formulario</h3>
+        <p>Complete la solicitud en línea con sus datos, sus beneficiarios y la declaración de salud. Le tomará menos de 10 minutos.</p>
+      </div>
+      <div class="step-card">
+        <div class="num-badge">3</div>
+        <h3>Quedará protegido</h3>
+        <p>Una vez aprobado, recibe su certificado de seguro y el cobro empieza automáticamente por planilla. Su familia queda protegida desde ese momento.</p>
+      </div>
+    </div>
+
+    <div class="afil-cta-block">
+      <h3>Su familia merece esta tranquilidad</h3>
+      <p>Por menos de ¢9.000 al mes, puede dormir tranquilo sabiendo que sus seres queridos están respaldados.</p>
+      <!-- TODO: reemplazar href="#afiliarse" con el link de la plataforma de afiliación cuando esté listo -->
+      <a class="cta-rect" href="#afiliarse" id="ctaAfiliarse">
+        📝 Quiero afiliarme ahora
+        <span style="font-size:18px">→</span>
+      </a>
+      <br/>
+      <a class="cta-secondary" href="https://wa.me/50686248757?text=Hola%2C%20quisiera%20información%20sobre%20la%20afiliación%20a%20ACEPO" target="_blank" rel="noopener">
+        💬 Prefiero hablar primero por WhatsApp
+      </a>
+    </div>
+
+    <nav class="step-nav-btns">
+      <button class="step-btn prev" data-target="s3">← Costo</button>
+    </nav>
+  </section>
+
+  <!-- ============ CIERRE ============ -->
+  <div class="closing">
+    <p class="msg">"Porque servir al país no debería significar dejar a su familia sin respaldo. En ACEPO llevamos más de 35 años cuidando a quienes nos cuidan."</p>
+    <div class="signature">
+      — Asociación Cultural y Educativa Para La Policía
+      <span class="lic">ACEPO · Sin fines de lucro · Respaldo del INS desde 1983</span>
+    </div>
+    <div class="social-proof">
+      <div class="stars">★★★★★</div>
+      <p>Miles de funcionarios públicos ya están protegidos con ACEPO</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-logos">
+    <svg class="footer-logo" viewBox="0 0 200 200" aria-hidden="true"><use href="#acepo-logo"/></svg>
+    <div class="footer-logo-divider"></div>
+    <img class="footer-ins-logo" src="img/ins-blanco.png" alt="INS" />
+  </div>
+  <div class="footer-brand">ACEPO · Asociación Cultural y Educativa Para La Policía</div>
+  <div class="contact-row">
+    <a href="tel:+50622875168">📞 2287-5168</a>
+    <a href="https://wa.me/50686248757" target="_blank" rel="noopener">💬 WhatsApp 8624-8757</a>
+    <a href="mailto:atencionalcliente@acepo.cr">✉️ atencionalcliente@acepo.cr</a>
+  </div>
+  <div class="legal">
+    Seguro de Vida Colectivo Contrato Tipo · Póliza madre N° <b>0101VTM0000704</b> emitida por el <b>Instituto Nacional de Seguros (INS)</b>. La documentación contractual y nota técnica están registradas ante la Superintendencia General de Seguros bajo el registro <b>P14-26-A01-884 V7</b> de fecha 22 de junio de 2024, conforme al art. 29 inciso d) de la Ley Reguladora del Mercado de Seguros, Ley 8653. Las Condiciones Particulares tienen prelación sobre las Condiciones Generales. Esta página es de carácter informativo: los términos definitivos son los del contrato suscrito.
+  </div>
+</footer>
+
+<!-- ============ FLOATING NAV ============ -->
+<div class="float-nav" id="floatNav">
+  <button id="floatPrev" title="Anterior">←</button>
+  <span class="ctr"><span id="floatCtr">1</span> / 4</span>
+  <button id="floatNext" title="Siguiente">→</button>
+</div>
+
+<script>
+// ============ STICKY NAV + INTERSECTION OBSERVER ============
+const sections = document.querySelectorAll('.section');
+const stickyDots = document.querySelectorAll('.sticky-dot');
+const stickyNav = document.getElementById('stickyNav');
+const floatNav = document.getElementById('floatNav');
+const floatCtr = document.getElementById('floatCtr');
+const floatPrev = document.getElementById('floatPrev');
+const floatNext = document.getElementById('floatNext');
+
+let currentSection = 0;
+const sectionIds = ['s1', 's2', 's3', 's4'];
+
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY > 200;
+  stickyNav.classList.toggle('visible', scrolled);
+  floatNav.classList.toggle('visible', scrolled);
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      const idx = sectionIds.indexOf(entry.target.id);
+      if (idx !== -1) {
+        currentSection = idx;
+        updateActiveStates();
+      }
+    }
+  });
+}, {
+  threshold: 0.01,
+  rootMargin: '0px 0px -10% 0px'
+});
+sections.forEach(s => observer.observe(s));
+
+function updateActiveStates() {
+  stickyDots.forEach((dot, i) => {
+    dot.classList.remove('active', 'done');
+    if (i < currentSection) dot.classList.add('done');
+    if (i === currentSection) dot.classList.add('active');
+  });
+  floatCtr.textContent = currentSection + 1;
+  floatPrev.disabled = currentSection === 0;
+  floatNext.disabled = currentSection === sectionIds.length - 1;
+}
+
+stickyDots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    document.getElementById(dot.dataset.target).scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+document.querySelectorAll('.step-btn[data-target]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById(btn.dataset.target).scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// ============ BENTO COBERTURAS — expand/collapse ============
+const bentoTiles = document.querySelectorAll('.bento-tile');
+function toggleBento(tile) {
+  const wasOpen = tile.classList.contains('expanded');
+  bentoTiles.forEach(t => {
+    t.classList.remove('expanded');
+    t.setAttribute('aria-expanded', 'false');
+  });
+  if (!wasOpen) {
+    tile.classList.add('expanded');
+    tile.setAttribute('aria-expanded', 'true');
+  }
+}
+bentoTiles.forEach(tile => {
+  tile.addEventListener('click', () => toggleBento(tile));
+  tile.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleBento(tile);
+    }
+  });
+});
+
+// ============ FLOATING NAV ============
+floatPrev.addEventListener('click', () => {
+  if (currentSection > 0) document.getElementById(sectionIds[currentSection - 1]).scrollIntoView({ behavior: 'smooth' });
+});
+floatNext.addEventListener('click', () => {
+  if (currentSection < sectionIds.length - 1) document.getElementById(sectionIds[currentSection + 1]).scrollIntoView({ behavior: 'smooth' });
+});
+</script>
+
+</body>
+</html>
