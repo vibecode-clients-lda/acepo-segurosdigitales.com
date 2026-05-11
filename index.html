@@ -500,10 +500,25 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
 /* ============ SECCIÓN 2 — BENEFICIOS ============ */
 .benefits-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 14px;
 }
-@media (max-width: 600px) { .benefits-grid { grid-template-columns: 1fr; } }
+.benefit-block.wide {
+  grid-column: 1 / -1;
+}
+.benefit-block.wide .convenios-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+@media (max-width: 820px) {
+  .benefits-grid { grid-template-columns: 1fr 1fr; }
+  .benefit-block.wide .convenios-list { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .benefits-grid { grid-template-columns: 1fr; }
+  .benefit-block.wide .convenios-list { grid-template-columns: 1fr; }
+}
 .benefit-block {
   background: #fff;
   border: 1px solid var(--border);
@@ -1264,7 +1279,7 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
     </div>
 
     <div class="benefits-grid">
-      <div class="benefit-block">
+      <div class="benefit-block wide">
         <h3><span class="ico">🤝</span> Convenios comerciales</h3>
         <p class="lead">Como asociado de ACEPO accede a tarifas preferenciales con nuestros aliados. Toque cada convenio para ver el detalle del descuento.</p>
         <div class="convenios-list">
