@@ -1,6 +1,6 @@
 ---
 name: especialista-acepo
-description: ESPECIALISTA ACEPO — Landing page explicadora del Seguro Colectivo de Vida ACEPO (póliza INS 0101VTM0000704). Single-file HTML+CSS+JS vanilla, paleta teal/cian + navy + dorado, 6 coberturas en bento clickeable, 9 convenios en acordeón <details>, botón flotante WhatsApp 8624-8757, CTA "Quiero afiliarme" con placeholder pendiente de plataforma. Repo vibecode-clients-lda/acepo-segurosdigitales.com (cliente Vibecode, no SDI). Usar este skill cuando JC pida cualquier cambio al proyecto ACEPO.
+description: ESPECIALISTA ACEPO — Landing page explicadora del Seguro Colectivo de Vida ACEPO (póliza INS 0101VTM0000704). Single-file HTML+CSS+JS vanilla, paleta teal/cian + navy + dorado, 6 coberturas en bento clickeable, 9 convenios en acordeón <details>, botón flotante WhatsApp 8624-8757, CTA "Quiero afiliarme" conectado a Google Form https://forms.gle/7GGYVKYeXprWELet9. Repo vibecode-clients-lda/acepo-segurosdigitales.com (cliente Vibecode, no SDI). Usar este skill cuando JC pida cualquier cambio al proyecto ACEPO.
 ---
 
 # Especialista ACEPO — Seguro Colectivo de Vida
@@ -13,10 +13,12 @@ Landing page explicadora del **Seguro Colectivo de Vida ACEPO** (Asociación Cul
 
 Producto: póliza madre `0101VTM0000704` con el INS, modalidad contributiva, registro SUGESE `P14-26-A01-884 V7`. ¢15M de cobertura base, hasta ¢30M con doble indemnización accidental, beneficio familiar de hasta +¢15M adicional, costo ¢8.631/mes (rebajo de planilla, ¢4.316 quincenal).
 
-## Estado actual (checkpoint 2026-05-11)
+## Estado actual (checkpoint 2026-05-12)
 
-Sesión productiva inicial: del repo vacío al deploy listo.
+Sesión productiva inicial completa: del repo vacío al sitio listo para deploy con afiliación funcional.
 
+- **`a2a50ab` (12 may 2026):** CTA "Quiero afiliarme" conectado a Google Form `https://forms.gle/7GGYVKYeXprWELet9` (target=_blank)
+- **`177d862` (11 may 2026):** SKILL.md agregado al repo
 - **`19a2450` (11 may 2026):** monto beneficio familiar +¢15M + separación visual del hint CTA
 - **`a2eec6d` (11 may 2026):** WhatsApp pasa a botón flotante (bottom-left) con pulse animado; CTA "Quiero afiliarme" sin competencia visual
 - **`52907c2` (11 may 2026):** rebalanceo Sección 2 — Convenios full-width con 2 columnas internas + 3 bloques chicos abajo
@@ -126,9 +128,12 @@ Estilo **basado en el explicador del cotizador-autos** (mismo patrón visual: be
 
 ## Pendientes
 
-- **Link de la plataforma de afiliación**: actualmente `href="#afiliarse"` (placeholder con TODO). JC dijo que estaría lista "en una semana" (~18 may 2026). Reemplazar con el URL real cuando lo entregue.
 - **Subdominio + deploy**: pendiente Netlify connect + DNS `acepo-segurosdigitales.com` (apuntar al sitio Netlify).
 - **PNG oficial de mayor resolución**: el actual (76 KB) sirve, pero si JC consigue uno de mayor resolución se reemplaza el archivo sin cambiar nada más.
+
+## Completados
+
+- ✅ **CTA Afiliarse conectado al Google Form** `https://forms.gle/7GGYVKYeXprWELet9` (commit `a2a50ab`, 12 may 2026). Abre en pestaña nueva (`target=_blank rel=noopener`).
 
 ## Flujo de trabajo (cómo hacer cambios)
 
