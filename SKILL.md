@@ -13,10 +13,13 @@ Landing page explicadora del **Seguro Colectivo de Vida ACEPO** (Asociación Cul
 
 Producto: póliza madre `0101VTM0000704` con el INS, modalidad contributiva, registro SUGESE `P14-26-A01-884 V7`. ¢15M de cobertura base, hasta ¢30M con doble indemnización accidental, beneficio familiar de hasta +¢15M adicional, costo ¢8.631/mes (rebajo de planilla, ¢4.316 quincenal).
 
-## Estado actual (checkpoint 2026-05-12)
+## Estado actual (checkpoint 2026-05-16)
 
-Sesión productiva inicial completa: del repo vacío al sitio listo para deploy con afiliación funcional.
+Sesión productiva inicial completa + reestructura Sección 4 con dos modalidades de afiliación equivalentes.
 
+- **`e804418` (16 may 2026):** refactor(seccion-4) — reestructura afiliación en 2 modalidades equivalentes. Reemplaza el bloque "Activación inmediata" amarillo (que quedaba visualmente desconectado del resto) por una grilla 2-col con cards equivalentes: **Deducción de planilla (Estándar)** + **Activación inmediata (Vía rápida)**. Ambas cards comparten design system (teal-bg + radius 16px), diferenciadas por accent dorado en `border-left` y badge "Vía rápida" en la columna B. Misma estructura visual: header con icono + pill, lead box, 3 pasos numerados, CTAs al pie. Mobile: stacked. Título de sección cambia a "Elija cuándo iniciar su cobertura". El banner del comprobante refuerza "Su cobertura se activa al recibir el comprobante" y vive contenido dentro de la card B.
+- **`fbe270c` (16 may 2026):** primer intento "Activación inmediata" como bloque amarillo separado debajo del CTA — reemplazado por `e804418` por feedback de UX (color invasivo + sensación de fragmentación).
+- **`3a2908d` (15 may 2026):** "Powered by Seguros Digitales SDI" en el footer
 - **`a2a50ab` (12 may 2026):** CTA "Quiero afiliarme" conectado a Google Form `https://forms.gle/7GGYVKYeXprWELet9` (target=_blank)
 - **`177d862` (11 may 2026):** SKILL.md agregado al repo
 - **`19a2450` (11 may 2026):** monto beneficio familiar +¢15M + separación visual del hint CTA
