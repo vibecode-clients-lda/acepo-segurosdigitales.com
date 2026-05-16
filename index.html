@@ -1118,6 +1118,306 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
   padding: 0 8px;
   font-family: 'Space Grotesk', sans-serif;
 }
+
+/* ============ VÍA RÁPIDA — ACTIVACIÓN INMEDIATA ============ */
+.via-rapida-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 32px auto 0;
+  max-width: 520px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  font-style: italic;
+  text-align: center;
+}
+.via-rapida-divider::before,
+.via-rapida-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border) 30%, var(--border) 70%, transparent);
+}
+
+.fast-track-card {
+  margin: 20px auto 0;
+  max-width: 760px;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef9c3 100%);
+  border: 1px solid #fde68a;
+  border-left: 3px solid var(--gold-mid);
+  border-radius: 14px;
+  padding: 22px 24px;
+  position: relative;
+  text-align: left;
+}
+.fast-track-card h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 19px;
+  color: var(--navy);
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.fast-track-card h3 .icon {
+  font-size: 22px;
+  line-height: 1;
+}
+.fast-track-card .lead {
+  font-size: 14px;
+  color: #4b3a07;
+  margin: 0 0 16px;
+  line-height: 1.55;
+}
+.fast-track-card .lead b {
+  color: var(--gold-text);
+  font-weight: 700;
+}
+
+.fast-track-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: var(--gold-text);
+  border: 1.5px solid var(--gold-mid);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
+              background 200ms ease,
+              box-shadow 200ms ease,
+              border-color 200ms ease;
+}
+.fast-track-toggle:hover {
+  background: var(--gold-bg);
+  border-color: var(--gold-deep);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, .2);
+}
+.fast-track-toggle:active {
+  transform: scale(0.97);
+}
+.fast-track-toggle .chev {
+  display: inline-block;
+  font-size: 12px;
+  transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.fast-track-card[data-open="true"] .fast-track-toggle .chev {
+  transform: rotate(180deg);
+}
+
+.fast-track-panel {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 0;
+  transition: max-height 360ms cubic-bezier(0.23, 1, 0.32, 1),
+              opacity 240ms ease-out,
+              margin-top 360ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.fast-track-card[data-open="true"] .fast-track-panel {
+  max-height: 820px;
+  opacity: 1;
+  margin-top: 20px;
+}
+
+.bank-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+@media (max-width: 640px) {
+  .bank-cards { grid-template-columns: 1fr; }
+}
+.bank-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 280ms cubic-bezier(0.23, 1, 0.32, 1),
+              transform 280ms cubic-bezier(0.23, 1, 0.32, 1),
+              border-color 200ms ease;
+}
+.fast-track-card[data-open="true"] .bank-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fast-track-card[data-open="true"] .bank-card:nth-child(1) { transition-delay: 80ms; }
+.fast-track-card[data-open="true"] .bank-card:nth-child(2) { transition-delay: 130ms; }
+.fast-track-card[data-open="true"] .bank-card:nth-child(3) { transition-delay: 180ms; }
+
+@media (hover: hover) and (pointer: fine) {
+  .bank-card:hover { border-color: var(--gold-mid); }
+}
+
+.bank-card .bank-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.bank-card .bank-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--navy);
+  font-weight: 600;
+  word-break: break-all;
+  line-height: 1.3;
+  user-select: all;
+}
+.bank-card .copy-btn {
+  align-self: flex-start;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--navy);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: transform 140ms cubic-bezier(0.23, 1, 0.32, 1),
+              background 180ms ease,
+              border-color 180ms ease,
+              color 180ms ease;
+}
+.bank-card .copy-btn:hover {
+  background: var(--gold-bg);
+  border-color: var(--gold-mid);
+}
+.bank-card .copy-btn:active {
+  transform: scale(0.96);
+}
+.bank-card .copy-btn[data-copied="true"] {
+  background: var(--green-bg);
+  border-color: var(--green-fresh);
+  color: var(--green-text);
+}
+
+.beneficiary-line {
+  font-size: 12.5px;
+  color: #4b3a07;
+  margin: 0 0 14px;
+  padding: 9px 12px;
+  background: rgba(255, 255, 255, .65);
+  border-radius: 8px;
+  border-left: 2px solid var(--gold-mid);
+  line-height: 1.45;
+}
+.beneficiary-line b {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.send-receipt-banner {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border: 1px solid #fed7aa;
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.send-receipt-banner .banner-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: #7c2d12;
+  line-height: 1.55;
+}
+.send-receipt-banner .banner-title .pulse {
+  font-size: 18px;
+  display: inline-block;
+  line-height: 1;
+  flex-shrink: 0;
+  animation: send-pulse 2.6s ease-in-out infinite;
+}
+@keyframes send-pulse {
+  0%, 70%, 100% { transform: scale(1); }
+  85% { transform: scale(1.18); }
+}
+.send-receipt-banner .banner-title b {
+  font-weight: 700;
+  color: #431407;
+}
+
+.send-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.send-btn {
+  flex: 1 1 200px;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: transform 140ms cubic-bezier(0.23, 1, 0.32, 1),
+              background 200ms ease,
+              box-shadow 200ms ease,
+              border-color 200ms ease;
+}
+.send-btn.wa {
+  background: #25D366;
+  color: #fff;
+}
+.send-btn.wa:hover {
+  background: #1ebd5b;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, .35);
+}
+.send-btn.mail {
+  background: #fff;
+  color: var(--navy);
+  border-color: var(--border);
+}
+.send-btn.mail:hover {
+  border-color: var(--navy);
+  box-shadow: 0 4px 12px rgba(12, 35, 64, .15);
+}
+.send-btn:active {
+  transform: scale(0.97);
+}
+
+.form-reminder {
+  margin: 14px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.form-reminder b { color: var(--navy); }
 </style>
 </head>
 <body>
@@ -1594,6 +1894,80 @@ main { max-width: 880px; margin: 0 auto; padding: 0 24px 60px; }
       <p class="cta-hint">¿Dudas antes de afiliarse? Tiene el botón de WhatsApp siempre disponible abajo a la izquierda.</p>
     </div>
 
+    <!-- ============ VÍA RÁPIDA: ACTIVACIÓN INMEDIATA ============ -->
+    <div class="via-rapida-divider" aria-hidden="true">Quiero cobertura inmediata</div>
+
+    <div class="fast-track-card" id="fastTrack" data-open="false">
+      <h3>
+        <span class="icon" aria-hidden="true">⚡</span>
+        Active su cobertura HOY mismo
+      </h3>
+      <p class="lead">
+        Pague el primer mes (<b>₡8.631</b>) por adelantado y queda asegurado de inmediato — sin esperar al primer rebajo de planilla.
+      </p>
+      <button type="button" class="fast-track-toggle" id="fastTrackToggle" aria-expanded="false" aria-controls="fastTrackPanel">
+        <span class="toggle-label">Ver opciones de pago</span>
+        <span class="chev" aria-hidden="true">▾</span>
+      </button>
+
+      <div class="fast-track-panel" id="fastTrackPanel" role="region" aria-labelledby="fastTrackToggle">
+        <div class="bank-cards">
+          <div class="bank-card">
+            <div class="bank-head"><span aria-hidden="true">🏦</span> BCR</div>
+            <div class="bank-num" id="ibanBcr">CR76015201001048737853</div>
+            <button type="button" class="copy-btn" data-copy-target="ibanBcr" aria-label="Copiar IBAN BCR">
+              <span aria-hidden="true">📋</span>
+              <span class="copy-text" aria-live="polite">Copiar</span>
+            </button>
+          </div>
+          <div class="bank-card">
+            <div class="bank-head"><span aria-hidden="true">🏦</span> Banco Popular</div>
+            <div class="bank-num" id="ibanPop">CR3016101000100078884</div>
+            <button type="button" class="copy-btn" data-copy-target="ibanPop" aria-label="Copiar IBAN Banco Popular">
+              <span aria-hidden="true">📋</span>
+              <span class="copy-text" aria-live="polite">Copiar</span>
+            </button>
+          </div>
+          <div class="bank-card">
+            <div class="bank-head"><span aria-hidden="true">📱</span> SINPE Móvil</div>
+            <div class="bank-num" id="sinpeNum">8624-8757</div>
+            <button type="button" class="copy-btn" data-copy-target="sinpeNum" aria-label="Copiar número SINPE">
+              <span aria-hidden="true">📋</span>
+              <span class="copy-text" aria-live="polite">Copiar</span>
+            </button>
+          </div>
+        </div>
+
+        <p class="beneficiary-line">
+          A nombre de: <b>Asociación Cultural y Educativa Para La Policía (ACEPO)</b>
+        </p>
+
+        <div class="send-receipt-banner">
+          <div class="banner-title">
+            <span class="pulse" aria-hidden="true">⏱️</span>
+            <div>
+              <b>Inmediatamente después del pago,</b> envíe el comprobante con su <b>nombre completo y cédula</b> a:
+            </div>
+          </div>
+          <div class="send-actions">
+            <a class="send-btn wa" href="https://wa.me/50686248757?text=Hola%2C%20le%20env%C3%ADo%20mi%20comprobante%20de%20pago%20del%20primer%20mes%20de%20ACEPO.%0A%0ANombre%20completo%3A%20%0AC%C3%A9dula%3A%20" target="_blank" rel="noopener">
+              <span aria-hidden="true">💬</span>
+              WhatsApp 8624-8757
+            </a>
+            <a class="send-btn mail" href="mailto:atencionalcliente@acepo.cr?subject=Comprobante%20de%20pago%20primer%20mes%20ACEPO&body=Adjunto%20el%20comprobante%20de%20pago%20del%20primer%20mes.%0A%0ANombre%20completo%3A%20%0AC%C3%A9dula%3A%20">
+              <span aria-hidden="true">✉️</span>
+              atencionalcliente@acepo.cr
+            </a>
+          </div>
+        </div>
+
+        <p class="form-reminder">
+          <span aria-hidden="true">📝</span>
+          Recuerde llenar también el <b>formulario de afiliación</b> arriba.
+        </p>
+      </div>
+    </div>
+
     <nav class="step-nav-btns">
       <button class="step-btn prev" data-target="s3">← Costo</button>
     </nav>
@@ -1742,6 +2116,62 @@ floatPrev.addEventListener('click', () => {
 floatNext.addEventListener('click', () => {
   if (currentSection < sectionIds.length - 1) document.getElementById(sectionIds[currentSection + 1]).scrollIntoView({ behavior: 'smooth' });
 });
+
+// ============ VÍA RÁPIDA — activación inmediata ============
+(function initFastTrack() {
+  const card = document.getElementById('fastTrack');
+  const toggle = document.getElementById('fastTrackToggle');
+  if (!card || !toggle) return;
+
+  const label = toggle.querySelector('.toggle-label');
+
+  toggle.addEventListener('click', () => {
+    const isOpen = card.dataset.open === 'true';
+    const next = !isOpen;
+    card.dataset.open = String(next);
+    toggle.setAttribute('aria-expanded', String(next));
+    if (label) label.textContent = next ? 'Ocultar opciones' : 'Ver opciones de pago';
+  });
+
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const targetId = btn.dataset.copyTarget;
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      const text = target.textContent.trim();
+      const textEl = btn.querySelector('.copy-text');
+      const restore = () => {
+        btn.dataset.copied = 'false';
+        if (textEl) textEl.textContent = 'Copiar';
+      };
+      const mark = () => {
+        btn.dataset.copied = 'true';
+        if (textEl) textEl.textContent = '✓ Copiado';
+        clearTimeout(btn._copyTimer);
+        btn._copyTimer = setTimeout(restore, 1800);
+      };
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          mark();
+          return;
+        }
+      } catch (e) { /* fallthrough */ }
+      try {
+        const range = document.createRange();
+        range.selectNode(target);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        document.execCommand('copy');
+        sel.removeAllRanges();
+        mark();
+      } catch (err) {
+        // sin feedback si todo falla; el número queda seleccionable manualmente
+      }
+    });
+  });
+})();
 </script>
 
 </body>
