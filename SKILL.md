@@ -11,6 +11,8 @@ Contexto completo del proyecto para retomar sin perder contexto. Leer COMPLETO a
 
 Landing page explicadora del **Seguro Colectivo de Vida ACEPO** (Asociación Cultural y Educativa Para La Policía), respaldado por el INS, dirigido a **funcionarios públicos** (origen histórico: policía). No es exclusivo SDI — ACEPO es cliente de Vibecode bajo la marca propia.
 
+> **No confundir con la app de reclamos.** ACEPO tiene un segundo proyecto: `Reclamos-Colectivos` (repo `vibecode-clients-lda/Reclamos-Colectivos` → `reclamos-colectivos.netlify.app`), la app de gestión de reclamos de las 3 pólizas 0101 (VTM 805 / 704 / 703). Ese proyecto tiene su propio skill: **`especialista-en-reclamos-colectivos`** (`C:/Users/segur/.claude/skills/especialista-en-reclamos-colectivos/SKILL.md`). Este skill cubre SOLO la landing explicadora.
+
 Producto: póliza madre `0101VTM0000704` con el INS, modalidad contributiva, registro SUGESE `P14-26-A01-884 V7`. ¢15M de cobertura base, hasta ¢30M con doble indemnización accidental, beneficio familiar de hasta +¢15M adicional, costo ¢8.631/mes (rebajo de planilla, ¢4.316 quincenal).
 
 ## Estado actual (checkpoint 2026-05-16)
